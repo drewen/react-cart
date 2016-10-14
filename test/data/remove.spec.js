@@ -1,5 +1,5 @@
-import * as cart from '../src/index';
-import remove from '../src/remove';
+import * as cart from '../../src/index';
+import remove from '../../src/data/remove';
 import {expect} from 'chai';
 
 describe('remove', () => {

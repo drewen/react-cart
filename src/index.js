@@ -1,6 +1,6 @@
-import cartModule, {cartClear, cartTotal} from './cart';
-import addModule from './add';
-import removeModule from './remove';
+import cartModule, {cartClear, cartTotal} from './data/cart';
+import addModule from './data/add';
+import removeModule from './data/remove';
 
 // Get all information about items in the cart
 export const cart = cartModule;

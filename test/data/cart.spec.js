@@ -1,4 +1,4 @@
-import getCart, * as cart from '../src/cart';
+import getCart, * as cart from '../../src/data/cart';
 import {expect} from 'chai';
 
 describe('cart', () => {

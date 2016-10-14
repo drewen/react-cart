@@ -1,5 +1,5 @@
-import * as cart from '../src/index';
-import add from '../src/add';
+import * as cart from '../../src/index';
+import add from '../../src/data/add';
 import {expect} from 'chai';
 
 describe('add', () => {

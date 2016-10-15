@@ -1,21 +1,19 @@
-import {sumBy} from 'lodash';
-
-let myCart = [];
+import store from '../store';
 
 // Get all information about items in the cart
 export function cart() {
-  return myCart
+  return store.getState().items;
 }
 export default cart;
 
-
 // Empty all items from cart
 export function cartClear() {
-  myCart = [];
+  store.dispatch({
+    type: 'CLEAR'
+  });
 }
 
 // Get total cost of all items in cart
 export function cartTotal() {
-  const stringTotal = sumBy(myCart, 'cost').toFixed(2);
-  return parseFloat(stringTotal);
+  return store.getState().total;
 }

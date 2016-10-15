@@ -1,6 +1,6 @@
 import {isUndefined} from 'lodash';
 
-import myCart from './cart';
+import store from '../store';
 
 // Add item to cart
 export default function(item) {
@@ -16,5 +16,8 @@ export default function(item) {
     throw new Error('An id is required for each item added.');
   }
 
-  myCart().push(item);
+  store.dispatch({
+    type: 'ADD_ITEM',
+    item
+  });
 }

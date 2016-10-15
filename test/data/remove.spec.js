@@ -1,10 +1,13 @@
-import * as cart from '../../src/index';
 import remove from '../../src/data/remove';
+import add from '../../src/data/add';
+import store from '../../src/store';
 import {expect} from 'chai';
 
-describe('remove', () => {
+describe('data:remove', () => {
   beforeEach(() => {
-    cart.clear();
+    store.dispatch({
+      type: 'CLEAR'
+    })
   });
 
   it('should remove the only item', () => {
@@ -14,11 +17,12 @@ describe('remove', () => {
       cost: 2.01
     };
 
-    cart.add(item);
-    cart.remove({id: 123});
+    add(item);
+    remove({id: 123});
 
-    expect(cart.cart()).to.deep.equal([]);
-    expect(cart.total()).to.equal(0);
+    const cart = store.getState();
+    expect(cart.items).to.deep.equal([]);
+    expect(cart.total).to.equal(0);
   });
 
   it('should remove one item from multiple', () => {
@@ -28,12 +32,13 @@ describe('remove', () => {
       cost: 2.01
     };
 
-    cart.add(item);
-    cart.add(item);
-    cart.remove({id: 123});
+    add(item);
+    add(item);
+    remove({id: 123});
 
-    expect(cart.cart()).to.deep.equal([item]);
-    expect(cart.total()).to.equal(2.01);
+    const cart = store.getState();
+    expect(cart.items).to.deep.equal([item]);
+    expect(cart.total).to.equal(2.01);
   });
 
   it('should remove one item from multiple with differing ids', () => {
@@ -49,18 +54,20 @@ describe('remove', () => {
       cost: 2.05
     };
 
-    cart.add(item1);
-    cart.add(item2);
-    cart.remove({id: 321});
+    add(item1);
+    add(item2);
+    remove({id: 321});
 
-    expect(cart.cart()).to.deep.equal([item1]);
-    expect(cart.total()).to.equal(2.01);
+    let cart = store.getState();
+    expect(cart.items).to.deep.equal([item1]);
+    expect(cart.total).to.equal(2.01);
 
-    cart.add(item2);
-    cart.remove({id: 123});
+    add(item2);
+    remove({id: 123});
 
-    expect(cart.cart()).to.deep.equal([item2]);
-    expect(cart.total()).to.equal(2.05);
+    cart = store.getState();
+    expect(cart.items).to.deep.equal([item2]);
+    expect(cart.total).to.equal(2.05);
   });
 
   it('should remove the only item by index', () => {
@@ -70,11 +77,12 @@ describe('remove', () => {
       cost: 2.01
     };
 
-    cart.add(item);
-    cart.remove({index: 0});
+    add(item);
+    remove({index: 0});
 
-    expect(cart.cart()).to.deep.equal([]);
-    expect(cart.total()).to.equal(0);
+    const cart = store.getState();
+    expect(cart.items).to.deep.equal([]);
+    expect(cart.total).to.equal(0);
   });
 
   it('should remove one item from multiple by index', () => {
@@ -90,32 +98,24 @@ describe('remove', () => {
       cost: 2.05
     };
 
-    cart.add(item1);
-    cart.add(item2);
-    cart.remove({index: 1});
+    add(item1);
+    add(item2);
+    remove({index: 1});
 
-    expect(cart.cart()).to.deep.equal([item1]);
-    expect(cart.total()).to.equal(2.01);
+    let cart = store.getState();
+    expect(cart.items).to.deep.equal([item1]);
+    expect(cart.total).to.equal(2.01);
 
-    cart.add(item2);
-    cart.remove({index: 0});
+    add(item2);
+    remove({index: 0});
 
-    expect(cart.cart()).to.deep.equal([item2]);
-    expect(cart.total()).to.equal(2.05);
+    cart = store.getState();
+    expect(cart.items).to.deep.equal([item2]);
+    expect(cart.total).to.equal(2.05);
   });
 
-  it('should error when removing a non-existent item', () => {
-    const item = {
-      id: 123,
-      name: 'pencil',
-      cost: 2.01
-    };
-
-    cart.add(item);
-
-    expect(() => cart.remove({index: 2})).to.throw('Cannot remove an item not in the cart.');
-    expect(() => cart.remove({id: 4})).to.throw('Cannot remove an item not in the cart.');
-    expect(() => cart.remove({})).to.throw('Cannot remove an item not in the cart.');
+  it('should error when no index or id provided', () => {
+    expect(() => remove({})).to.throw('An index or id is required to remove an item.');
   });
 
 });

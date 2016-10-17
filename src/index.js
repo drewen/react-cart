@@ -4,7 +4,7 @@ import removeModule from './data/remove';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import {Provider} from 'react-redux';
-import CartContainer from './components/CartContainer';
+import CartContainer from './components/cartContainer';
 import store from './store';
 
 // Get all information about items in the cart

@@ -2,11 +2,13 @@
   "name": "react-cart",
   "version": "0.0.1",
   "description": "Javascript cart handler for shopping websites",
+  "main": "dist/index.js",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/drewen/react-cart.git"
+    "type": "git",
+    "url": "https://github.com/drewen/react-cart.git"
   },
   "scripts": {
+    "prepublish": "babel src/ --out-dir dist",
     "test": "istanbul cover _mocha"
   },
   "keywords": [
@@ -23,6 +25,7 @@
     "redux": "3.6.0"
   },
   "devDependencies": {
+    "babel-cli": "6.16.0",
     "babel-preset-es2015": "6.16.0",
     "babel-preset-react": "6.16.0",
     "babel-register": "6.16.3",

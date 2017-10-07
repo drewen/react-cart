@@ -12,7 +12,7 @@ notifications:
   email: false
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 before_script:
 - npm run lint
 after_success:
@@ -21,7 +21,8 @@ deploy:
   on:
     tags: true
     node: 6
+  skip_cleanup: true
   provider: npm
   email: amsmith514@gmail.com
   api_key:
-    secure: J9B5OXMpyRTcYAUsrpa5TGY0csSPQjoizs08WMBoLq52rt2Kt6FY3SNC8CORojz9VvJdKJ+hv5qw11tZv5B+lSLLHiWtLi3pDqlG3pVsMyjiwuPtU/G4c+LgCYDop9dxKHV4k7CEQXA6ekGu/sjlNqQpk/3wrf8ol7HmiGZc1N4fUCENjF7j7dXlaHeoiUkeZCRUa/1SYV9kbDScklMeQ1HoTm5mccNQahFvGgDfrdFt/Hc9JZm0IyjyOeD53ktnC4VwUYtlMxy7VQlIB1zBcI1QNGL7y3hP7guC7rwaIMCCNKySs0zy3ajQp+iUat6ONmG4dqoLlVp4hQ1c00TW3/Eb5rZI+7cEJg4sxN1ECezkU7HOUxUlSgwWFFLPaFijK2a3LGETZt6TmfKI6LFSKJgZAvx36ZRuTY1gixo43dr4K715orOb4dmFm0QanA6ko84rNfXqfrctcw1M9SHWL/BfadOzXx4UHjB0rv8Cg+viDUMMt78IOA6WALcJiudqIDSw5sFvr7z+vc4gYR+zyisZTQiNZQP9fU/kKJPBhaUjzcQth9y74Mksk/eN1Lhm9CXF0u3OHjksRCQs9sw/3kXQu5J5Y4TRUsh6XdU0xH8hj0FSOpD6elqFnnL2ITeClHEliJA4THiasGCW4vSQILBuBe5vdyAUB4gleRzmbbc=
+    secure: ScUU8QHf/UvL9aZ2A8f0L+8qY5u7LCwj7KTdRLe/ERNl0W9JfUJtjcpTcsMRVVBxTph5u7MQT5UV7rvUkQWPFvjlyb07F674bW9UQYQFZcTPqOjintlf0X8B2e4slnM1tlhonsQRMR5DlnLG1Bv4AHF3tEkFNmkvdpeht0/+/i4yAle9I1xV6oLuOMojOmGQ8CbqQCyM1rvdcuk8kdmgzWQ2gPDbBi7vwYQiQA+exMtIDRsY/Sz1wU0tvvi/W3AFAURUdRto3/vLRzgmxAnPx9AAzus/IMWtWXFEnzhFP5JOAU/26+2t6xI+g/B/A8dHXzRPx4mjdrcPqThEN2nMDUs/wI0piT11fwjVQUyOpkFZDbo3G9zI5eo9MhYUTh7PqdboSrGkJy3UhxxSi0sFk1kvmmTTGfsd0R8P6FyoiAbsufy3etPzWCxj2bzRJBZCFeCORkcOaXzoqIyrS5FL19RpkycaGbYd3NPHTmsqUpO6xx9mn64Kt6x/6tjFKRdxs9hqt7RH6JTMzrDJtNHBKgJe3xjTN3vrgM6i8fzqxyfV4hQlTf+9bVY/Lj/704j10LN9OxgDBQUVfcCE7EJ4rugVj2C/yuvSzub5RSppAXBx3IhBN3Iqqkjx6ArjWvU5Qcj2ckYqBWfE6vJeG+6zKs5qtotJE0P+tTlXSGcCz/Y=

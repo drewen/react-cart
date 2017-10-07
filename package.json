@@ -1,6 +1,6 @@
 {
   "name": "react-cart",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Javascript cart handler for shopping websites",
   "main": "dist/index.js",
   "repository": {

@@ -20,7 +20,7 @@ after_success:
 deploy:
   on:
     tags: true
-    node: 6.0.0
+    node: 6
   provider: npm
   email: amsmith514@gmail.com
   api_key:

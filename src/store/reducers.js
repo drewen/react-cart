@@ -21,11 +21,11 @@ const addItem = (state, action) => {
     return state;
   }
 
-  const newItems = state.items.concat(newItem)
+  const newItems = state.items.concat(newItem);
 
   return {
     items: newItems
-  }
+  };
 };
 
 const removeItem = (state, action) => {
@@ -46,13 +46,13 @@ const removeItem = (state, action) => {
 
     return {
       items: newItems
-    }
+    };
   }
 
   return state;
 };
 
-const clearCart = (state, action) => {
+const clearCart = () => {
   return initialState;
 };
 
@@ -70,4 +70,4 @@ export default (state = initialState, action) => {
   const typeFunction = reducers[action.type];
 
   return typeFunction ? typeFunction(state, action) : state;
-}
+};

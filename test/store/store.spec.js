@@ -1,6 +1,6 @@
 import reducers from '../../src/store/reducers';
-import {add, remove, clear} from '../../src/store/action-creators'
-import {getItems, getTotal} from '../../src/store/selectors'
+import {add, remove, clear} from '../../src/store/action-creators';
+import {getItems, getTotal} from '../../src/store/selectors';
 import {expect} from 'chai';
 
 describe('store', () => {
@@ -47,7 +47,7 @@ describe('store', () => {
 
       const newState = reducers(initialState, {item: badItem, type});
       expect(newState).to.deep.equal(initialState);
-      expect(() => add(badItem)).to.throw()
+      expect(() => add(badItem)).to.throw();
     });
 
     it('should require a cost to add', () => {
@@ -169,8 +169,8 @@ describe('store', () => {
 
       const otherState = reducers(initialState, remove({index: 111111}));
 
-      expect(getItems(newState)).to.deep.equal([item]);
-      expect(getTotal(newState)).to.equal(2.01);
+      expect(getItems(otherState)).to.deep.equal([item]);
+      expect(getTotal(otherState)).to.equal(2.01);
     });
   });
 

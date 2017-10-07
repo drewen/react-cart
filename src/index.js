@@ -22,19 +22,14 @@ export const add = (item) => store.dispatch(actionCreators.add(item));
 // Remove item from cart
 export const remove = (query) => store.dispatch(actionCreators.remove(query));
 
-export const mount = (element) => {
-  return ReactDOM.render(
-    <Provider store={store}>
-      <CartContainer />
-    </Provider>,
-    element
-  );
-};
-
 export const component = () => {
   return (
     <Provider store={store}>
       <CartContainer />
     </Provider>
   );
-}
+};
+
+export const mount = (element) => {
+  return ReactDOM.render(component(), element);
+};

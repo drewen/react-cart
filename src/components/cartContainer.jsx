@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {getItems, getTotal} from '../store/selectors'
 import Cart from './cart';
 
 class CartContainer extends Component {
@@ -12,8 +13,8 @@ class CartContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    items: state.items,
-    total: state.total
+    items: getItems(state),
+    total: getTotal(state)
   };
 }
 

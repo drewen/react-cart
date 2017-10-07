@@ -1,14 +1,9 @@
-import {isUndefined, sumBy, findIndex, reject} from 'lodash';
+import {isUndefined, findIndex, reject} from 'lodash';
 import {ADD_ITEM, REMOVE_ITEM, CLEAR} from './actions';
 
-const getTotal = (items) => {
-  const stringTotal = sumBy(items, 'cost').toFixed(2);
-  return parseFloat(stringTotal);
-};
 
 const initialState = {
-  items: [],
-  total: 0
+  items: []
 };
 
 const addItem = (state, action) => {
@@ -29,8 +24,7 @@ const addItem = (state, action) => {
   const newItems = state.items.concat(newItem)
 
   return {
-    items: newItems,
-    total: getTotal(newItems)
+    items: newItems
   }
 };
 
@@ -51,8 +45,7 @@ const removeItem = (state, action) => {
     const newItems = reject(items, (value, index) => index === foundIndex);
 
     return {
-      items: newItems,
-      total: getTotal(newItems)
+      items: newItems
     }
   }
 
@@ -76,5 +69,5 @@ export default (state = initialState, action) => {
 
   const typeFunction = reducers[action.type];
 
-  return typeFunction ? typeFunction(state, action) : state; 
+  return typeFunction ? typeFunction(state, action) : state;
 }

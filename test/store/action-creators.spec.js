@@ -1,12 +1,12 @@
 import {expect} from 'chai';
-import {add, remove, clear} from '../../src/store/action-creators'
-import store from '../../src/store'
+import {add, remove, clear} from '../../src/store/action-creators';
+import store from '../../src/store';
 
 describe('action-creators', () => {
 
   describe('add', () => {
     beforeEach(() => {
-      store.dispatch(clear())
+      store.dispatch(clear());
     });
 
     it('should add an item', () => {
@@ -67,7 +67,7 @@ describe('action-creators', () => {
 
   describe('remove', () => {
     beforeEach(() => {
-      store.dispatch(clear())
+      store.dispatch(clear());
     });
 
     it('should remove the only item', () => {
@@ -172,4 +172,4 @@ describe('action-creators', () => {
     });
 
   });
-})
+});

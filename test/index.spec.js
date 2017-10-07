@@ -1,9 +1,7 @@
-import * as cart from '../src';
-import cartDefault from '../src';
+import cartDefault, * as cart from '../src';
 import {expect} from 'chai';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import {mount} from 'enzyme';
+import {Provider} from 'react-redux';
 
 describe('integration', () => {
   describe('components', () => {
@@ -14,9 +12,8 @@ describe('integration', () => {
     });
 
     it('returns a mountable component', () => {
-      const rootDiv = document.createElement('div');
-      const mountedEl = ReactDOM.render(cart.component(), rootDiv);
-      expect(mountedEl).to.exist;
+      const wrapper = mount(cart.component());
+      expect(wrapper.find(Provider)).to.have.lengthOf(1);
     });
   });
 
@@ -48,7 +45,7 @@ describe('integration', () => {
       expect(cart.cart()).to.deep.equal([item, item]);
       expect(cartDefault()).to.deep.equal([item, item]);
       expect(cart.total()).to.equal(4.02);
-      cart.clear()
+      cart.clear();
       expect(cart.cart()).to.deep.equal([]);
       expect(cartDefault()).to.deep.equal([]);
       expect(cart.total()).to.equal(0);

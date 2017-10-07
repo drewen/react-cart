@@ -1,4 +1,4 @@
-import CartItemComponent from '../../src/components/cartItem'
+import CartItemComponent from '../../src/components/cartItem';
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "prepublish": "babel src/ --out-dir dist",
-    "test": "istanbul cover _mocha"
+    "test": "istanbul cover _mocha",
+    "lint": "eslint src test"
   },
   "keywords": [
     "javascript",
@@ -31,6 +32,9 @@
     "chai": "3.5.0",
     "coveralls": "2.11.14",
     "enzyme": "2.4.1",
+    "eslint": "4.8.0",
+    "eslint-plugin-mocha": "4.11.0",
+    "eslint-plugin-react": "7.4.0",
     "istanbul": "1.1.0-alpha.1",
     "jsdom": "9.6.0",
     "jsdom-global": "2.1.0",

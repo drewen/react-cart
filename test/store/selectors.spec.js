@@ -51,10 +51,10 @@ describe('selectors', () => {
       ],
       total: 11.64
     }
-  ]
+  ];
 
   describe('getItems', () => {
-    itemTests.forEach( ({description, items}) => {
+    itemTests.forEach(({description, items}) => {
       it(`returns items from state with ${description}`, () => {
         expect(getItems({items})).to.deep.equal(items);
       });
@@ -62,7 +62,7 @@ describe('selectors', () => {
   });
 
   describe('getTotal', () => {
-    itemTests.forEach( ({description, items, total}) => {
+    itemTests.forEach(({description, items, total}) => {
       it(`returns total from state with ${description}`, () => {
         expect(getTotal({items})).to.equal(total);
       });

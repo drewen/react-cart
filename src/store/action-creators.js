@@ -18,7 +18,7 @@ export const add = (item) => {
     type: ADD_ITEM,
     item
   };
-}
+};
 
 export const remove = (query) => {
   const {id, index} = query;
@@ -32,10 +32,10 @@ export const remove = (query) => {
     id,
     index
   };
-}
+};
 
 export const clear = () => {
   return {
     type: CLEAR
   };
-}
+};

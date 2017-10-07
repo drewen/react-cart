@@ -4,11 +4,17 @@ node_js:
 - 6
 - 5
 - 4
+branches:
+  only:
+  - master
+  - /^(v\d+\.\d+(\.\d+)?)*$/
 notifications:
   email: false
 cache:
   directories:
     - "node_modules"
+before_script:
+- npm run lint
 after_success:
 - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
 deploy:

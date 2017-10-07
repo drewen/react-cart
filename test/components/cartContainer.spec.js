@@ -1,6 +1,6 @@
 import CartContainer from '../../src/components/cartContainer';
-import CartComponent from '../../src/components/cart'
-import CartItemComponent from '../../src/components/cartItem'
+import CartComponent from '../../src/components/cart';
+import CartItemComponent from '../../src/components/cartItem';
 import {add, remove, clear} from '../../src';
 import store from '../../src/store';
 import React from 'react';
@@ -26,7 +26,7 @@ describe('components:cartContainer', () => {
 
     const cartItemComponents = wrapper.find(CartItemComponent);
     expect(cartItemComponents.length).to.equal(0);
-  })
+  });
 
   it('has an initial state based on cart data', () => {
     const item = {

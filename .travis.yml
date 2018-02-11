@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-- 8
-- 6
-- 5
-- 4
+  - 9
+  - 8
+  - 6
 branches:
   only:
   - master
@@ -20,7 +19,7 @@ after_success:
 deploy:
   on:
     tags: true
-    node: 6
+    node: 8
   skip_cleanup: true
   provider: npm
   email: amsmith514@gmail.com

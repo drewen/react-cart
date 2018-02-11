@@ -39,19 +39,23 @@ describe('components:cartContainer', () => {
 
     const wrapper = mount(<CartContainer store={store} />);
     const cartComponent = wrapper.find(CartComponent);
+    wrapper.update();
     expect(cartComponent.length).to.equal(1);
     expect(cartComponent.props()).to.deep.equal({items: [item], total: 2.01});
     const cartItemComponents = wrapper.find(CartItemComponent);
     expect(cartItemComponents.length).to.equal(1);
+    wrapper.unmount();
 
     add(item);
 
     const wrapper2 = mount(<CartContainer store={store} />);
+    wrapper2.update();
     const cartComponent2 = wrapper2.find(CartComponent);
     expect(cartComponent2.length).to.equal(1);
     expect(cartComponent2.props()).to.deep.equal({items: [item, item], total: 4.02});
-    const cartItemComponents2 = wrapper.find(CartItemComponent);
+    const cartItemComponents2 = wrapper2.find(CartItemComponent);
     expect(cartItemComponents2.length).to.equal(2);
+    wrapper2.unmount();
   });
 
   it('updates cart items and total when an item is added', () => {
@@ -65,6 +69,7 @@ describe('components:cartContainer', () => {
 
     add(item);
 
+    wrapper.update();
     const cartComponent = wrapper.find(CartComponent);
     expect(cartComponent.length).to.equal(1);
     expect(cartComponent.props()).to.deep.equal({items: [item], total: 2.01});
@@ -83,6 +88,7 @@ describe('components:cartContainer', () => {
 
     add(item);
 
+    wrapper.update();
     const cartComponent = wrapper.find(CartComponent);
     expect(cartComponent.length).to.equal(1);
     expect(cartComponent.props()).to.deep.equal({items: [item], total: 2.01});
@@ -91,7 +97,9 @@ describe('components:cartContainer', () => {
 
     remove({id: 123});
 
-    expect(cartComponent.props()).to.deep.equal({items: [], total: 0});
+    wrapper.update();
+    const cartComponentUpdated = wrapper.find(CartComponent);
+    expect(cartComponentUpdated.props()).to.deep.equal({items: [], total: 0});
     expect(wrapper.find(CartItemComponent).length).to.equal(0);
   });
 });

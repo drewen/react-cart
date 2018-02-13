@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -x
 git branch -D gh-pages
 git reset
 git clean -xdfe /docs/

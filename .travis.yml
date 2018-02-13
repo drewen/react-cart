@@ -5,6 +5,7 @@ node_js:
   - 6
 branches:
   only:
+  - github-pages
   - master
   - /^(v\d+\.\d+(\.\d+)?)*$/
 notifications:
@@ -19,11 +20,19 @@ script:
 after_success:
 - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
 deploy:
-  on:
-    tags: true
-    node: 8
-  skip_cleanup: true
-  provider: npm
-  email: amsmith514@gmail.com
-  api_key:
-    secure: ScUU8QHf/UvL9aZ2A8f0L+8qY5u7LCwj7KTdRLe/ERNl0W9JfUJtjcpTcsMRVVBxTph5u7MQT5UV7rvUkQWPFvjlyb07F674bW9UQYQFZcTPqOjintlf0X8B2e4slnM1tlhonsQRMR5DlnLG1Bv4AHF3tEkFNmkvdpeht0/+/i4yAle9I1xV6oLuOMojOmGQ8CbqQCyM1rvdcuk8kdmgzWQ2gPDbBi7vwYQiQA+exMtIDRsY/Sz1wU0tvvi/W3AFAURUdRto3/vLRzgmxAnPx9AAzus/IMWtWXFEnzhFP5JOAU/26+2t6xI+g/B/A8dHXzRPx4mjdrcPqThEN2nMDUs/wI0piT11fwjVQUyOpkFZDbo3G9zI5eo9MhYUTh7PqdboSrGkJy3UhxxSi0sFk1kvmmTTGfsd0R8P6FyoiAbsufy3etPzWCxj2bzRJBZCFeCORkcOaXzoqIyrS5FL19RpkycaGbYd3NPHTmsqUpO6xx9mn64Kt6x/6tjFKRdxs9hqt7RH6JTMzrDJtNHBKgJe3xjTN3vrgM6i8fzqxyfV4hQlTf+9bVY/Lj/704j10LN9OxgDBQUVfcCE7EJ4rugVj2C/yuvSzub5RSppAXBx3IhBN3Iqqkjx6ArjWvU5Qcj2ckYqBWfE6vJeG+6zKs5qtotJE0P+tTlXSGcCz/Y=
+  - provider: npm
+    email: amsmith514@gmail.com
+    api_key:
+      secure: ScUU8QHf/UvL9aZ2A8f0L+8qY5u7LCwj7KTdRLe/ERNl0W9JfUJtjcpTcsMRVVBxTph5u7MQT5UV7rvUkQWPFvjlyb07F674bW9UQYQFZcTPqOjintlf0X8B2e4slnM1tlhonsQRMR5DlnLG1Bv4AHF3tEkFNmkvdpeht0/+/i4yAle9I1xV6oLuOMojOmGQ8CbqQCyM1rvdcuk8kdmgzWQ2gPDbBi7vwYQiQA+exMtIDRsY/Sz1wU0tvvi/W3AFAURUdRto3/vLRzgmxAnPx9AAzus/IMWtWXFEnzhFP5JOAU/26+2t6xI+g/B/A8dHXzRPx4mjdrcPqThEN2nMDUs/wI0piT11fwjVQUyOpkFZDbo3G9zI5eo9MhYUTh7PqdboSrGkJy3UhxxSi0sFk1kvmmTTGfsd0R8P6FyoiAbsufy3etPzWCxj2bzRJBZCFeCORkcOaXzoqIyrS5FL19RpkycaGbYd3NPHTmsqUpO6xx9mn64Kt6x/6tjFKRdxs9hqt7RH6JTMzrDJtNHBKgJe3xjTN3vrgM6i8fzqxyfV4hQlTf+9bVY/Lj/704j10LN9OxgDBQUVfcCE7EJ4rugVj2C/yuvSzub5RSppAXBx3IhBN3Iqqkjx6ArjWvU5Qcj2ckYqBWfE6vJeG+6zKs5qtotJE0P+tTlXSGcCz/Y=
+    on:
+      tags: true
+      node: 8
+    skip_cleanup: true
+  - provider: pages
+    local-dir: docs
+    verbose: true
+    keep-history: true
+    allow-empty-commit: true
+    skip-cleanup: true
+    on:
+      branch: github-pages

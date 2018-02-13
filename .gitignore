@@ -41,3 +41,5 @@ coverage
 dist
 
 docs/js
+
+package-lock.json

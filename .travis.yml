@@ -28,11 +28,7 @@ deploy:
       tags: true
       node: 8
     skip_cleanup: true
-  - provider: pages
-    local-dir: docs
-    verbose: true
-    keep-history: true
-    allow-empty-commit: true
-    skip-cleanup: true
+  - provider: script
+    script: bash ./pages.sh
     on:
       branch: github-pages

@@ -12,7 +12,7 @@ describe('components:cart', () => {
     expect(wrapper.find('.__react-cart-items').children()).to.have.length(0);
     expect(wrapper.find(CartItemComponent)).to.have.length(0);
     expect(wrapper.find('.__react-cart-total')).to.have.length(1);
-    expect(wrapper.find('.__react-cart-total').text()).to.equal('');
+    expect(wrapper.find('.__react-cart-total').text()).to.equal('TotalClear');
   });
 
   it('displays items in the cart', () => {
@@ -33,6 +33,8 @@ describe('components:cart', () => {
 
   it('displays total cost of all items in cart', () => {
     const wrapper = shallow(<CartComponent total={2.01}/>);
-    expect(wrapper.find('.__react-cart-total').text()).to.equal('2.01');
+    expect(wrapper.find('.__react-cart-total').text()).to.contain('Total');
+    expect(wrapper.find('.__react-cart-total').text()).to.contain('2.01');
+    expect(wrapper.find('.__react-cart-total button').text()).to.equal('Clear');
   });
 });

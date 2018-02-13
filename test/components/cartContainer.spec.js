@@ -8,7 +8,10 @@ import {shallow, mount} from 'enzyme';
 import {expect} from 'chai';
 
 describe('components:cartContainer', () => {
-  beforeEach(() => {
+  before(() => {
+    clear();
+  });
+  afterEach(() => {
     clear();
   });
 
@@ -98,6 +101,66 @@ describe('components:cartContainer', () => {
     remove({id: 123});
 
     wrapper.update();
+    const cartComponentUpdated = wrapper.find(CartComponent);
+    expect(cartComponentUpdated.props()).to.deep.equal({items: [], total: 0});
+    expect(wrapper.find(CartItemComponent).length).to.equal(0);
+  });
+
+  it('updates cart items and total when an item is removed via button', () => {
+    const item = {
+      id: 123,
+      name: 'pencil',
+      cost: 2.01
+    };
+
+    const wrapper = mount(<CartContainer store={store} />);
+
+    add(item);
+
+    wrapper.update();
+    const cartComponent = wrapper.find(CartComponent);
+    expect(cartComponent.length).to.equal(1);
+    expect(cartComponent.props()).to.deep.equal({items: [item], total: 2.01});
+    const cartItemComponent = wrapper.find(CartItemComponent);
+    expect(cartItemComponent.length).to.equal(1);
+
+    const removeButton = cartItemComponent.find('button')
+    expect(removeButton.length).to.equal(1);
+    expect(removeButton.text()).to.equal('Remove');
+    removeButton.simulate('click')
+
+    wrapper.update();
+    const cartComponentUpdated = wrapper.find(CartComponent);
+    expect(cartComponentUpdated.props()).to.deep.equal({items: [], total: 0});
+    expect(wrapper.find(CartItemComponent).length).to.equal(0);
+  });
+
+  it('clears all cart items when cleared', () => {
+    const item = {
+      id: 123,
+      name: 'pencil',
+      cost: 2.01
+    };
+
+    let wrapper = mount(<CartContainer store={store} />);
+
+    add(item);
+    add(item);
+    add(item);
+
+    wrapper = wrapper.update();
+    const cartComponent = wrapper.find(CartComponent);
+    expect(cartComponent.length).to.equal(1);
+    expect(cartComponent.props()).to.deep.equal({items: [item, item, item], total: 6.03});
+    const cartItemComponent = wrapper.find(CartItemComponent);
+    expect(cartItemComponent.length).to.equal(3);
+
+    const clearButton = cartComponent.find('.__react-cart-total-clear button')
+    expect(clearButton.length).to.equal(1);
+    expect(clearButton.text()).to.equal('Clear');
+    clearButton.simulate('click')
+    debugger
+    wrapper = wrapper.update();
     const cartComponentUpdated = wrapper.find(CartComponent);
     expect(cartComponentUpdated.props()).to.deep.equal({items: [], total: 0});
     expect(wrapper.find(CartItemComponent).length).to.equal(0);

@@ -5,5 +5,5 @@ git clean -xdfe /docs/
 
 mv docs/* .
 rm -rf docs
-git commit -m "Pages"
+git commit -am "Pages"
 git push -f origin gh-pages

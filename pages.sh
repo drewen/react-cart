@@ -1,5 +1,6 @@
 #! /bin/sh -x
 git branch -D gh-pages
+git checkout --orphan gh-pages
 git reset
 git clean -xdfe /docs/
 

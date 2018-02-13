@@ -1,0 +1,45 @@
+.stock-item {
+  width: 300px;
+  display: flex;
+  justify-content: space-between
+}
+
+.stock-item-name {
+  width: 150px;
+}
+
+.__react-cart-item {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.__react-cart-item-name {
+  width: 100px;
+}
+
+.__react-cart-item-cost {
+  width: 50px;
+}
+
+.__react-cart-item-remove {
+  width: 100px;
+}
+
+.__react-cart-total {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.__react-cart-total-label {
+  width: 100px;
+}
+
+.__react-cart-total-amount {
+  width: 50px;
+}
+
+.__react-cart-total-clear {
+  width: 100px;
+}
